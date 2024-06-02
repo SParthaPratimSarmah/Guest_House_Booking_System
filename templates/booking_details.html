@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Guest House Login System</title>
+    <style>
+        #book-catalog {
+            margin: 20px auto;
+            max-width: 90%;
+            padding: 20px;
+            background-color: lightgoldenrodyellow;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #book-catalog h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid greenyellow;
+            text-align: left;
+        }
+
+        th {
+            background-color: yellow;
+            text-align: left;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: orangered;
+        }
+
+        .topnav a {
+            float: left;
+            color: yellow;
+            text-align: center;
+            padding: 8px 10px;
+            text-decoration: none;
+            font-size: 17px;
+            background-color: yellowgreen;
+        }
+
+        .topnav a:hover {
+            background-color: lightskyblue;
+            color: yellow;
+        }
+
+        .topnav a.active {
+            background-color: black;
+            color: yellow;
+        }
+
+        body {
+            background-image: url('/static/wal.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        form {
+            padding: 20px;
+            border: 3px solid #b3e3ff;
+            background-color: rgba(255, 13, 0, 0.5);
+            margin: 50px auto;
+            width: 80%;
+            border-radius: 10px;
+
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: rgba(238, 255, 0, 0.8);
+            ;
+            color: black;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+        .alert {
+            background-color: red;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        .form-container {
+            display: none;
+            padding: 20px;
+            border: 3px solid #b3e3ff;
+            background-color: rgba(255, 13, 0, 0.5);
+            margin: 50px auto;
+            width: 80%;
+            border-radius: 10px;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;color: orangered;"><b><b><strong>Guest-House Booking System</strong></b></b></h1>
+
+    <!-- Check if session['username'] exists before displaying it -->
+    {% if 'username' in session %}
+    <div class="user-info">
+        <span style="color: white;text-align: center;">
+
+        </span>
+    </div>
+    {% endif %}
+
+    <div class="topnav">
+        <a href="/newentry">Guest Booking</a>
+        <a href="/available_room">Booking Room Details</a>
+        <a href="/available_room_details">Available Room Details</a>
+        <a href="/guestlist">Guest List</a>
+        <a class="active" href="/booking_details">Booking Details</a>
+        <a href="/logout">Logout</a>
+    </div><br><br>
+    <div class="container" style="background-color: rgba(28, 228, 91, 0.5);text-align: center;" id="book-catalog">
+        <input type="text" id="search_query" placeholder="Search by name">
+        <button type="button" onclick="searchTable()">Search</button>
+    </div>
+    <script>
+        function searchTable() {
+            // Get the user's search query
+            var input = document.getElementById('search_query');
+            var filter = input.value.toUpperCase();
+
+            // Get all the table rows
+            var rows = document.getElementsByClassName('table-row');
+
+            // Loop through the rows and toggle their display based on the search query
+            for (var i = 0; i < rows.length; i++) {
+                var guestName = rows[i].getElementsByTagName('td')[2].innerText.toUpperCase();
+                if (guestName.indexOf(filter) > -1) {
+                    rows[i].style.display = 'table-row';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+    
+    <div class="container" id="book-catalog">
+        <h2 style="text-align: center;color: #04AA6D;">Booking Details</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Guest ID</th>
+                    <th>Guest Name</th>
+                    <th>Room Type</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Check Out</th>
+                    <th>Booked Room for (days)</th>
+                    <th>Stay Room for (days)</th>
+                    <th>Room ID</th>
+                    <th>Room Number</th>
+                    <th>Room Floor</th>
+                    <th>Current Status</th>
+                    <th>Check In</th>
+                    <th>Cancel</th>
+                    <th>Check Out</th>
+                    <th>Booking Confirmed</th>
+                </tr>
+            </thead>
+            <tbody id="book-catalog-data">
+                {% for booking in booking_details %}
+                <tr class="table-row" style="display: table-row;">
+                    <!-- ... other code ... -->
+                    <td>{{ booking.bid }}</td>
+                    <td>{{ booking.guestid }}</td>
+                    <td>{{ booking.gname }}</td>
+                    <td>
+                        {% if booking.roomtypeid == 1 %}
+                        Single With AC
+                        {% elif booking.roomtypeid == 2 %}
+                        Single Without AC
+                        {% elif booking.roomtypeid == 3 %}
+                        Double With AC
+                        {% elif booking.roomtypeid == 4 %}
+                        Double Without AC
+                        {% else %}
+                        Unknown Room Type
+                        {% endif %}
+                    </td>
+                    <td>{{ booking.from_ }}</td>
+                    <td>{{ booking.to_ }}</td>
+                    <td>{{ booking.Check_out }}</td>
+                    <td>
+                        {# Calculate the number of days booked #}
+                        {% set days_booked = (booking.to_ - booking.from_).days %}
+                        {{ days_booked }}
+                    </td>
+                    <td>
+                        {# Calculate the number of days stayed #}
+                        {% if booking.Check_out %}
+                        {% set days_stayed = (booking.Check_out - booking.from_).days %}
+                        {% else %}
+                        {% set days_stayed = 0 %}
+                        {% endif %}
+                        {{ days_stayed }}
+                    </td>
+                    <td>{{ booking.roomid }}</td>
+                    <td>{{ booking.room_number }}</td>
+                    <td>{{ booking.room_flor }}</td>
+                    <td>
+                        {% if booking.status == '0' %}
+                        Booking Request
+                        {% elif booking.status == '1' %}
+                        Booking Confirmed
+                        {% elif booking.status == '2' %}
+                        Booking Canceled
+                        {% elif booking.status == '3' %}
+                        Check In (Occupied)
+                        {% elif booking.status == '4' %}
+                        Check Out (Completed)
+                        {% else %}
+                        Unknown Status
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="button-container">
+                            {% if booking.status == '1' %}
+                            <form method="POST" action="/check_in">
+                                <input type="hidden" name="bid" value="{{ booking.bid }}">
+                                <button type="submit">Check In</button>
+                            </form>
+                            {% elif booking.status == '0' %}
+                            <span style="color: red;">You are not booked yet</span>
+                            {% else %}
+                            <span style="color: red;">Cannot Check In</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="button-container">
+                            {% if booking.status == '1' %}
+                            <form method="POST" action="/cancel_booking">
+                                <input type="hidden" name="bid" value="{{ booking.bid }}">
+                                <button type="submit">Cancel</button>
+                            </form>
+                            {% elif booking.status == '0' %}
+                            <span style="color: red;">You are not booked yet</span>
+                            {% else %}
+                            <span style="color: red;">Cannot Cancel</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="button-container">
+                            {% if booking.status == '3' %}
+                            <form method="POST" action="/check_out">
+                                <input type="hidden" name="bid" value="{{ booking.bid }}">
+                                <button type="submit">Check Out</button>
+                            </form>
+                            {% else %}
+                            <span style="color: red;">Cannot Check Out</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="button-container">
+                            {% if booking.status == '0' %}
+                            <form method="POST" action="/confirmed">
+                                <input type="hidden" name="bid" value="{{ booking.bid }}">
+                                <button type="submit">Confirmed</button>
+                            </form>
+
+                            {% else %}
+                            <span style="color: red;">You can't confirmed now</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                    </div>
+                    </body>
+                    
+                    </html>

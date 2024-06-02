@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Guest House Booking System</title>
+    <style>
+        .topnav {
+            overflow: hidden;
+            background-color: skyblue;
+        }
+
+        .topnav a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 8px 10px;
+            text-decoration: none;
+            font-size: 17px;
+            background-color: wheat;
+        }
+
+        .topnav a:hover {
+            background-color: lightcoral;
+            color: yellow;
+        }
+
+        .topnav a.active {
+            background-color: black;
+            color: yellow;
+        }
+
+        body {
+            background-image: url('/static/background.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .welcome-box {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 191, 255, 0.5);
+            margin: 50px auto;
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        .welcome-box2 {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 32, 155, 0.5);
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .welcome-box3 {
+            text-align: center;
+            padding: 8px;
+            background-color: rgba(240, 251, 25, 0.5);
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .footer {
+            background-color: black;
+            padding: 2px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .room-container {
+        display: inline-block;
+        width: 200px;
+        margin: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+    }
+
+    .room-container img {
+        width: 150px;
+        height: 150px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .room-container h4 {
+        margin: 10px 0;
+        font-size: 20px;
+        color: #333;
+    }
+
+    .room-container p {
+        font-size: 18px;
+        color: #555;
+    }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;color: orangered;"><b><b><strong>Guest-House Booking System</strong></b></b> </h1>
+ 
+    <div class="topnav" style="background-color: skyblue;">
+        <a class="active" href="/guesthome/<username>">Guest Home Page</a>
+        <a href="/room_details_login_guest" >Available Room</a>
+        <a href="/Book_room" >Book Room</a>
+        <a href="/codetails" >Contact Details</a>
+        <a href="/search_book_details_here">Search Booking details</a>
+        <a href="/logout">Logout</a>
+    </div>
+    
+    <div class="welcome-box2">
+        <h3 style="color: yellow;">Room Details</h3>
+        <!-- Room 1 -->
+        <div class="room-container">
+            <img src="/static/singlewithAC.png" alt="Single With AC" style="width: 150px; height: 150px;">
+            <h4>Single With AC</h4>
+            <p>Price: Rs 2000 per day</p>
+        </div>
+    
+        <!-- Room 2 -->
+        <div class="room-container">
+            <img src="/static/single_without_ac.png" alt="Single Without AC" style="width: 150px; height: 150px;">
+            <h4>Single Without AC</h4>
+            <p>Price: Rs 1500 per day</p>
+        </div>
+    
+        <!-- Room 3 -->
+        <div class="room-container">
+            <img src="/static/Double.png" alt="Double With AC" style="width: 150px; height: 150px;">
+            <h4>Double With AC</h4>
+            <p>Price: Rs 4000 per day</p>
+        </div>
+    
+        <!-- Room 4 -->
+        <div class="room-container">
+            <img src="/static/DB.png" alt="Double Without AC" style="width: 150px; height: 150px;">
+            <h4>Double Without AC</h4>
+            <p>Price: Rs 3000 per day</p>
+        </div>
+    
+        
+    </div>
+
+
+    <script>
+        // Disable back and forward buttons by redirecting to the same page
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
+    <footer class="footer" style="color: white;">
+        <h2>Contact Us</h2>
+        <pre><b>Phone: </b>8638312465 <b>Email:</b>sarmahpranab90@gmail.com <a href="https://www.facebook.com/partha.sarmah.52/" target="_blank"><b style="color: lightskyblue;">Facebook</a></b> <a href="https://www.instagram.com/partha_pratim_sarmah/" target="_blank"><b style="color: pink;">Instagram</a></b></pre>
+    </footer>
+</body>
+
+</html>

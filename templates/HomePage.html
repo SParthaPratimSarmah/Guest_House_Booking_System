@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Guest House Booking System</title>
+    <style>
+        .topnav {
+            overflow: hidden;
+            background-color: orangered;
+        }
+
+        .topnav a {
+            float: left;
+            color: yellow;
+            text-align: center;
+            padding: 8px 10px;
+            text-decoration: none;
+            font-size: 17px;
+            background-color: yellowgreen;
+        }
+
+        .topnav a:hover {
+            background-color: lightskyblue;
+            color: yellow;
+        }
+
+        .topnav a.active {
+            background-color: black;
+            color: yellow;
+        }
+
+        body {
+            background-image: url('static/wal.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+           .welcome-box {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 191, 255, 0.5);
+            margin: 50px auto;
+            width: 80%;
+            border-radius: 10px;
+        }
+  .welcome-box2 {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 32, 155, 0.5);
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+        }
+        .welcome-box3 {
+            text-align: center;
+            padding: 8px;
+            background-color: rgba(240, 251, 25, 0.5);
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+        }
+ .footer {
+            background-color: black;
+            padding: 2px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+    </style>
+</head>
+
+<body>  
+
+    <h1 style="text-align: center;color: orangered;"><b><b><strong>Guest-House Booking System</strong></b></b> </h1>
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/login">Login</a>
+    </div>
+    <div class="welcome-box">
+        <h1 style="color: black;">Welcome to PPS Guest house 🏡!! </h1>
+        <h3>Enjoy your holiday❤️❤️</h3>
+    </div>
+    <div class="welcome-box2">
+        <h1>Facility</h1>
+        <div class="welcome-box3">
+            <h4>(1) Single Room With AC .Price = Rs.2000</h4>
+        </div>
+        <div class="welcome-box3">
+            <h4>(2) Single Room Without AC .Price = Rs.1500</h4>
+        </div>
+        <div class="welcome-box3">
+            <h4>(3) Double Room With AC .Price = Rs.4000</h4>
+        </div>
+        <div class="welcome-box3">
+            <h4>(4) Double Room Without AC .Price = Rs.3000</h4>
+        </div>
+    </div>
+    <script>
+        // Disable back and forward buttons by redirecting to the same page
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
+    <footer class="footer" style="color: white;">
+        <h2>Contact Us</h2> 
+        <pre><b>Phone: </b>8638312465 <b>Email:</b>sarmahpranab90@gmail.com <a href="https://www.facebook.com/partha.sarmah.52/" target="_blank"><b style="color: lightskyblue;">Facebook</a></b> <a href="https://www.instagram.com/partha_pratim_sarmah/" target="_blank"><b style="color: pink;">Instagram</a></b></pre>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Guest House Login System</title>
+    <style>
+        #book-catalog {
+            margin: 20px auto;
+            max-width: 90%;
+            padding: 20px;
+            background-color: lightgoldenrodyellow;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #book-catalog h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid greenyellow;
+            text-align: left;
+        }
+
+        th {
+            background-color: yellow;
+            text-align: left;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: orangered;
+        }
+
+        .topnav a {
+            float: left;
+            color: yellow;
+            text-align: center;
+            padding: 8px 10px;
+            text-decoration: none;
+            font-size: 17px;
+            background-color: yellowgreen;
+        }
+
+        .topnav a:hover {
+            background-color: lightskyblue;
+            color: yellow;
+        }
+
+        .topnav a.active {
+            background-color: black;
+            color: yellow;
+        }
+
+        body {
+            background-image: url('/static/wal.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        form {
+            padding: 20px;
+            border: 3px solid #b3e3ff;
+            background-color: rgba(255, 13, 0, 0.5);
+            margin: 50px auto;
+            width: 80%;
+            border-radius: 10px;
+
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: rgba(238, 255, 0, 0.8);
+            ;
+            color: black;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+        .alert {
+            background-color: red;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        .form-container {
+            display: none;
+            padding: 20px;
+            border: 3px solid #b3e3ff;
+            background-color: rgba(255, 13, 0, 0.5);
+            margin: 50px auto;
+            width: 80%;
+            border-radius: 10px;
+            color: yellow;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: skyblue;
+        }
+
+        .topnav a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 8px 10px;
+            text-decoration: none;
+            font-size: 17px;
+            background-color: wheat;
+        }
+
+        .topnav a:hover {
+            background-color: lightcoral;
+            color: yellow;
+        }
+
+        .topnav a.active {
+            background-color: black;
+            color: yellow;
+        }
+
+        body {
+            background-image: url('/static/background.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .welcome-box {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 191, 255, 0.5);
+            margin: 50px auto;
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        .welcome-box2 {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 32, 155, 0.5);
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .welcome-box3 {
+            text-align: center;
+            padding: 8px;
+            background-color: rgba(240, 251, 25, 0.5);
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .footer {
+            background-color: black;
+            padding: 2px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .room-container {
+            display: inline-block;
+            width: 200px;
+            margin: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .room-container img {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .room-container h4 {
+            margin: 10px 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .room-container p {
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;color: orangered;"><b><b><strong>Guest-House Booking System</strong></b></b> </h1>
+
+    <div class="topnav" style="background-color: skyblue;">
+        <a href="/guesthome/<username>">Guest Home Page</a>
+        <a href="/room_details_login_guest">Available Room</a>
+        <a class="active" href="/conBook">Book Room</a>
+        <a href="/codetails">Contact Details</a>
+        <a href="/search_book_details_here">Search Booking details</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="container">
+    
+        <form action="/conBook" method="post">
+            <h1 style="color: yellow;text-align: center;">Confirmed your Booking</h1>
+            <input type="hidden" name="bid" value="{{ bid }}">
+            <input type="hidden" name="selected_room_id" value="{{ roomid }}">
+            <button type="submit">Confirm Booking</button>
+        </form>
+         <form action="/BookCANCEL" method="post">
+            <h1 style="color:yellow;text-align: center;">Canceled your Booking</h1>
+            <input type="hidden" name="bid" value="{{ bid }}">
+            <input type="hidden" name="selected_room_id" value="{{ roomid }}">
+            <button type="submit" style="background-color: orangered;">Canceled Booking</button>
+        </form>
+    
+    </div>
+    
+    
+    
+    
+    </div>
